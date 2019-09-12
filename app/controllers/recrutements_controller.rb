@@ -14,7 +14,11 @@ class RecrutementsController < ApplicationController
 
   # GET /recrutements/new
   def new
-    @recrutement = Recrutement.new
+    
+   
+    @recrutement = Recrutement.new('content' => params[:content], 'deadline' => params[:deadline])
+ @club = Club.find(params['data_value'])
+
   end
 
   # GET /recrutements/1/edit
@@ -24,7 +28,8 @@ class RecrutementsController < ApplicationController
   # POST /recrutements
   # POST /recrutements.json
   def create
-    @recrutement = Recrutement.new(recrutement_params)
+   
+    @recrutement = Recrutement.create('content' => params[:content], 'deadline' => params[:deadline], club_id: params['club_id'])
 
     respond_to do |format|
       if @recrutement.save

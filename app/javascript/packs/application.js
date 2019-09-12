@@ -3,7 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
+// require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -25,26 +25,26 @@ $(document).on('turbolinks:load',function(){
 $('.envoi').off("click").on("click",function(){
 
 
-     		var id = $(this).attr('id');
+               var id = $(this).attr('id');
 
 
-     		Rails.ajax({
+               Rails.ajax({
 
-     	  		url: "/recrutements/new",
+                    url: "/recrutements/new",
 
-     	  		type: "get",
+                    type: "get",
 
-     	  		data: "data_value="+id,
+                    data: "data_value="+id,
 
-     	  		success: function(data) {
+                    success: function(data) {
                          window.location.replace('/recrutements/new?data_value='+id)
-     	  		},
+                    },
 
-     	  		error: function(data) {}
+                    error: function(data) {}
 
-     			})
+                    })
 
-     	})
+          })
 
 
 
@@ -57,7 +57,7 @@ $('.demand').off("click").on("click",function(){
                Rails.ajax({
 
                     url: "/requests/new",
-                    
+
 
                     type: "get",
 
@@ -73,12 +73,36 @@ $('.demand').off("click").on("click",function(){
 
           })
 
-     	
+
+
+
+
+$('.lasa').off("click").on("click",function(){
+
+
+               var id = $(this).attr('id');
+
+
+               Rails.ajax({
+
+                    url: "/events/new",
+                    
+
+                    type: "get",
+
+                    data: "data_value="+id,
+
+                    success: function(data) {
+                         window.location.replace('/events/new?data_value='+id)
+                    },
+
+                    error: function(data) {}
+
+                    })
+
+          })
+
+          
 
     });
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+
