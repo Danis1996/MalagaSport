@@ -47,14 +47,12 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   # PATCH/PUT /requests/1.json
   def update
-    respond_to do |format|
-      if @request.update(request_params)
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
-        format.json { render :show, status: :ok, location: @request }
-      else
-        format.html { render :edit }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
-      end
+    @club = @request.recrutement.club
+    @user = @request.user
+    if @user.update(club_id: @club.id)
+      redirect_to club_path(@club.id)
+    else
+      render @request
     end
   end
 

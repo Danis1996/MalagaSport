@@ -25,7 +25,13 @@ puts "20 seed for Quarter created succesfully with 4 attributs"
         User.create(email: Faker::Internet.email,
                     password: "123456", 
                     quarter_id: rand(1..20),
-                    club_id: rand(1..20)
+                    club_id: rand(1..20),
+                    first_name: Faker::Name.first_name ,
+                    last_name: Faker::Name.last_name,
+                    age: rand(12..50),
+                    description:Faker::Quote.yoda,
+                    gender: Faker::Gender.binary_type,
+                    pseudonym: Faker::Superhero.descriptor
                     )
     end
 
@@ -51,12 +57,24 @@ puts "10 seed for user created succesfully with 2 attributs and quarter_id"
 
 puts "10 seed for Club created succesfully with attribut user_id and quarter_id"
 
-    for user in (1..10)
+    10.times do
         Request.create(application_letter: Faker::Movie.quote, parcours: Faker::Movies::Hobbit.character, user_id: rand(1..10), recrutement_id: rand(1..20))
     end
 
 puts "10 seed for Request created succesfully with attribut user_id "
 
+    20.times do
+      a = 21
+      date = "#{a}/09/19"
+        Event.create(start_date: date, 
+                    duration: 5*rand(2..10), 
+                    title: Faker::Movie.quote, 
+                    description: Faker::Movies::Hobbit.character, 
+                    price: rand(10..50), 
+                    location: Faker::Game.title, 
+                    club_id: rand(1..20)
+                    )
+    end
 
     20.times do
 
@@ -72,6 +90,7 @@ puts "10 seed for Request created succesfully with attribut user_id "
 
                     description: Faker::Movies::Hobbit.character, 
 
+<<<<<<< HEAD
                     price: rand(10..50), 
 
                     location: Faker::Game.title, 
@@ -81,3 +100,6 @@ puts "10 seed for Request created succesfully with attribut user_id "
                     )
 
     end
+=======
+puts "20 seed for Events created succesfully with attribut user_id "
+>>>>>>> fc1d9d2d11afd75d7a7e81b70f4edcb1201c36ec
