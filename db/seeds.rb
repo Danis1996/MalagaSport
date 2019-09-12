@@ -58,4 +58,26 @@ puts "10 seed for Club created succesfully with attribut user_id and quarter_id"
 puts "10 seed for Request created succesfully with attribut user_id "
 
 
+    20.times do
 
+      a = 21
+
+      date = "#{a}/09/19"
+
+        Event.create(start_date: date, 
+
+                    duration: 5*rand(2..10), 
+
+                    title: Faker::Movie.quote, 
+
+                    description: Faker::Movies::Hobbit.character, 
+
+                    price: rand(10..50), 
+
+                    location: Faker::Game.title, 
+
+                    club_id: rand(1..20)
+
+                    )
+
+    end

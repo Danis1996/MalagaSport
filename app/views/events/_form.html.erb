@@ -11,37 +11,47 @@
     </div>
   <% end %>
 
+    <%= form_tag url_for(action: 'create'), method: "event" do %>
+    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+
+
   <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
+    <%= label_tag :start_date %>
+    <%= text_field_tag :start_date %>
   </div>
 
   <div class="field">
-    <%= form.label :duration %>
-    <%= form.number_field :duration %>
+    <%= label_tag :duration %>
+    <%= text_field_tag :duration %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= label_tag :description %>
+    <%= text_field_tag :description %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= label_tag :price %>
+    <%= text_field_tag :price %>
   </div>
 
   <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= label_tag :location %>
+    <%= text_field_tag :location %>
+  </div>
+
+
+    <div class="field">
+    <input type="hidden" name="club_id" value="<%=@club.id%>">
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+     <%= submit_tag "creer event" %>
   </div>
+<% end %>
 <% end %>
