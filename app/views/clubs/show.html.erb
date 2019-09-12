@@ -11,5 +11,10 @@
   <%= @club.category %>
 </p>
 
+<h1>Les membres du club</h1>
+<% @club.members.each do |member|%>
+<p><%= member.first_name%> <%= member.last_name%></p> 
+<% end %>
+
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

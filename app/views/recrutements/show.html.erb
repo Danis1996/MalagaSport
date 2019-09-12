@@ -61,10 +61,10 @@
 
  <% @recrutement.requests.each do |request| %>
             <div class="col-md-5 border border-primary shadow p-3 mb-5 bg-white rounded">
-                <h3>Nom demandeur: <%= link_to "#{request.nom}", request_path(request.id) %>    <%= request.prenom %> </h3>
+                <h3>Nom demandeur: <%= link_to "#{request.user.first_name}", request_path(request.recrutement.club.id), method: :patch %>    <%= request.user.last_name %> </h3>
                 
                
-                <p>Age: <%= request.age %></p>
+                <p>Age: <%= request.user.age %></p>
             </div>
             <% end %>
             
