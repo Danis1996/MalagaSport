@@ -14,7 +14,10 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
-    @request = Request.new
+
+   @request = Request.new('application_letter' => params[:application_letter],'parcours' => params[:parcours])
+     @recrutement = Recrutement.find(params['data_value'])
+
   end
 
   # GET /requests/1/edit
@@ -24,7 +27,11 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @request = Request.new(request_params)
+      
+          puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+  @request = Request.create('application_letter' => params[:application_letter],'parcours' => params[:parcours], recrutement_id: params['recrutement_id'], user_id: current_user.id)
+ @user = current_user
 
     respond_to do |format|
       if @request.save
@@ -69,6 +76,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:application_letter, :parcours)
+      params.require(:request).permit(:application_letter, :parcours, recrutement_id: params['recrutement_id'], user_id: current_user.id)
     end
 end

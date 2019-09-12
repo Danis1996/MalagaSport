@@ -10,11 +10,12 @@ class RecrutementsController < ApplicationController
   # GET /recrutements/1
   # GET /recrutements/1.json
   def show
+      @recrutement = Recrutement.find(params[:id])
   end
 
   # GET /recrutements/new
   def new
-    
+    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
    
     @recrutement = Recrutement.new('content' => params[:content], 'deadline' => params[:deadline])
  @club = Club.find(params['data_value'])
