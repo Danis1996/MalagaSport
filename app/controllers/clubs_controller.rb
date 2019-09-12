@@ -10,10 +10,13 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.json
   def show
+        @club = Club.find(params[:id])
   end
 
   # GET /clubs/new
-  def new
+  def new 
+    @user = current_user
+        @quarters = Quarter.all
     @club = Club.new
   end
 
@@ -24,7 +27,10 @@ class ClubsController < ApplicationController
   # POST /clubs
   # POST /clubs.json
   def create
-    @club = Club.new(club_params)
+      @my_user = current_user.id
+    @club = Club.create('name' => params[:name], 'category' => params[:category], quarter_id: params[:quarter_id])
+
+  @club.admin_id =  @my_user
 
     respond_to do |format|
       if @club.save
