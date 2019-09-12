@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @recrutement.content %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @recrutement.deadline %>
+</p>
+
+<%= link_to 'Edit', edit_recrutement_path(@recrutement) %> |
+<%= link_to 'Back', recrutements_path %>

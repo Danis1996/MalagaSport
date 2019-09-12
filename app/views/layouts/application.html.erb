@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scaff</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+  </head>
+
+  <body>
+    <% if user_signed_in? && current_user.role === 'admin' %>
+    <ul>
+      <li><a href="/admin"> Espace Admin </a></li>
+    </ul>
+
+    <% end %>
+
+    <ul>
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </li>
+
+    <li>
+      Voici ton email : <%= current_user.email %>
+    </li>
+
+    <li>
+      <%= link_to "Edit email / password", edit_user_registration_path %>
+    </li>
+
+        <li>
+<%= link_to "Ajouter un club", new_club_path %>
+
+ </li>
+   <li>
+<%= link_to "Liste des clubs", clubs_path %>
+
+ </li>
+
+  <li>
+<%= link_to "Liste des recrutements", recrutements_path %>
+
+ </li>
+  <% else %>
+    <li>    
+      <%= link_to "Sign in", new_user_session_path %>
+    </li>
+
+    <li>
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+
+
+  <% end %>
+</ul>
+    <%= yield %>
+  </body>
+</html>

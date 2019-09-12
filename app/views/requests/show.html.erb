@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Application letter:</strong>
+  <%= @request.application_letter %>
+</p>
+
+<p>
+  <strong>Parcours:</strong>
+  <%= @request.parcours %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
