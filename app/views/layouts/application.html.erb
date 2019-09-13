@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <h1>======================================================================================</h1>
+    <%= link_to "Home", root_path %>
     <% if user_signed_in? && current_user.role === 'admin' %>
     <ul>
       <li><a href="/admin"> Espace Admin </a></li>
@@ -27,21 +27,38 @@
     </li>
 
     <li>
-      Voici ton email : <%= current_user.email %>
+      <%= link_to "Profil", user_path(current_user.id) %>
     </li>
+
 
     <li>
-      <%= link_to "Edit email / password", edit_user_registration_path %>
+      
+
+
+       <% a = 0 %>
+<% Club.all.each do |club| %>
+
+  <% if club.admin.id == current_user.id %>
+  <a><%= link_to 'Mon club', club_path(club.id) %></a>
+    
+  <% else %>
+    <% a+= 1%>
+  <% end %>
+<% end %>
+<%if a == Club.all.count %>
+  <a><%= link_to 'Créer un club', new_club_path %></a>
+  
+<% end %>
+
+
+
+
     </li>
 
-        <li>
-<%= link_to "Ajouter un club", new_club_path %>
 
- </li>
-   <li>
-<%= link_to "Liste des clubs", clubs_path %>
-
- </li>
+    <li>
+      <%= link_to "Liste des clubs", clubs_path %>
+    </li>
 
   <li>
 <%= link_to "Liste des recrutements", recrutements_path %>
@@ -49,11 +66,11 @@
  </li>
   <% else %>
     <li>    
-      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Se connecter", new_user_session_path %>
     </li>
 
     <li>
-      <%= link_to "Sign up", new_user_registration_path %>
+      <%= link_to "S'inscrire", new_user_registration_path %>
     </li>
 
 

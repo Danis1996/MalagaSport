@@ -17,8 +17,11 @@
         <td><%= recrutement.content %></td>
         <td><%= recrutement.deadline %></td>
         <td><%= link_to 'Show', recrutement %></td>
+
+<% if current_user == recrutement.club.admin %>
         <td><%= link_to 'Edit', edit_recrutement_path(recrutement) %></td>
         <td><%= link_to 'Destroy', recrutement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,3 @@
 
 <br>
 
-<%= link_to 'New Recrutement', new_recrutement_path %>

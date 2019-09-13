@@ -59,11 +59,28 @@
 
 
 
+<div class="jumbotron">
+	  <div class="container text-center">
 
-<h1>Les membres du club</h1>
+      <h1 class="display-3 text-primary">Les membres du club</h1>
+  </div>  </div>
 <% @club.members.each do |member|%>
-<p><%= member.first_name%> <%= member.last_name%></p> 
+<h3 align="center"><%= member.first_name%> <%= member.last_name%></h3> 
 <% end %>
+
+
+
+
+<div class="jumbotron">
+	  <div class="container text-center">
+
+      <h1 class="display-3 text-primary">Les evenements du club</h1>
+  </div>  </div>
+<% @club.events.each do |event|%>
+<h3 align="center"><%= link_to "#{event.title}", event_path(event.id)%></h3>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

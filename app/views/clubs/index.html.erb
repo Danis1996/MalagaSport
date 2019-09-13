@@ -1,6 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Clubs</h1>
+<h1>Liste des Clubs</h1>
+ <% a = 0 %>
+<% @clubs.each do |club| %>
+
+  <% if club.admin.id == current_user.id %>
+  <h1><%= link_to 'Mon club', club_path(club.id) %></h1>
+    
+  <% else %>
+    <% a+= 1%>
+  <% end %>
+<% end %>
+<%if a == @clubs.count %>
+  <h1><%= link_to 'Créer un club', new_club_path %></h1>
+  
+<% end %>
 
 <table>
   <thead>
@@ -16,9 +30,13 @@
       <tr>
         <td><%= club.name %></td>
         <td><%= club.category %></td>
-        <td><%= link_to 'Show', club %></td>
-        <td><%= link_to 'Edit', edit_club_path(club) %></td>
-        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Afficher', club %></td>
+
+        <% if user_signed_in? && current_user.role === 'admin' %>
+                <td><%= link_to 'Modifier', edit_club_path(club) %></td>
+                <td><%= link_to 'Supprimer', club, method: :delete, data: { confirm: 'Voulez vous vraiment supprimer ce club?' } %></td>
+        <%end%>
+
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Club', new_club_path %>
+
