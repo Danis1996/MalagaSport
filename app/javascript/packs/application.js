@@ -72,4 +72,12 @@ $(document).on('turbolinks:load',function(){
           window.location.replace('/requests/'+id+'/edit?data_value='+recrutements)
      })
 
+
+     $('.club_edit').off("click").on("click", function(){
+          var id = $(this).data('quarterid')
+          var quarter = $(this).data('quarterid')
+          window.location.replace('/clubs/'+id+'/edit?data_value='+quarter)
+     })
+
+
 })

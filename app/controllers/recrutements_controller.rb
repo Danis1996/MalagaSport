@@ -46,8 +46,9 @@ class RecrutementsController < ApplicationController
   # PATCH/PUT /recrutements/1
   # PATCH/PUT /recrutements/1.json
   def update
+    @recrutement = Recrutement.find(params[:id])
     respond_to do |format|
-      if @recrutement.update(recrutement_params)
+      if @recrutement.update(content: params['content'], deadline:['deadline'])
         format.html { redirect_to @recrutement, notice: 'Recrutement was successfully updated.' }
         format.json { render :show, status: :ok, location: @recrutement }
       else
@@ -75,6 +76,6 @@ class RecrutementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recrutement_params
-      params.require(:recrutement).permit(:content, :deadline)
+      params.require(:recrutement).permit(content: params['content'], deadline:['deadline'])
     end
 end

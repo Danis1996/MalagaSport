@@ -47,8 +47,11 @@ class ClubsController < ApplicationController
   # PATCH/PUT /clubs/1
   # PATCH/PUT /clubs/1.json
   def update
+    @club = Club.find(params[:id])
+    puts "*"*60
+    puts params
     respond_to do |format|
-      if @club.update(club_params)
+      if @club.update(name: params['name'], category: params['category'])
         format.html { redirect_to @club, notice: 'Club was successfully updated.' }
         format.json { render :show, status: :ok, location: @club }
       else
@@ -76,6 +79,6 @@ class ClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
-      params.require(:club).permit(:name, :category)
+      params.require(:club).permit(name: params['name'], category: params['category'])
     end
 end

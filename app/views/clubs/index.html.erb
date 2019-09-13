@@ -33,7 +33,7 @@
         <td><%= link_to 'Afficher', club %></td>
 
         <% if user_signed_in? && current_user.role === 'admin' %>
-                <td><%= link_to 'Modifier', edit_club_path(club) %></td>
+                <td><a href="#" data-clubid ="<%=@club.id%>" data-quarterid="<%=@club.quarter_id%>" class="club_edit">Edit</a></td>
                 <td><%= link_to 'Supprimer', club, method: :delete, data: { confirm: 'Voulez vous vraiment supprimer ce club?' } %></td>
         <%end%>
 

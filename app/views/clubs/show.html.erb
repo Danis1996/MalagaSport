@@ -99,7 +99,8 @@
 
 
 
-<%= link_to 'Edit', edit_club_path(@club) %> |
+
+<a href="#" data-clubid ="<%=@club.id%>" data-quarterid="<%=@club.quarter_id%>" class="club_edit">Edit</a> |
 <%= link_to 'Back', clubs_path %>
 
 <br><br>
