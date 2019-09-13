@@ -56,3 +56,7 @@ gem 'better_errors'
 gem 'table_print'
 gem 'devise'
 gem 'faker'
+
+
+gem "aws-sdk-s3", require: false
+gem 'dotenv-rails'
