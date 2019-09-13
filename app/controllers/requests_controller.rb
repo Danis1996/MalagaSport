@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   # GET /requests
@@ -28,9 +29,6 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-      
-          puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-
   @request = Request.create('application_letter' => params[:application_letter],'parcours' => params[:parcours], recrutement_id: params['recrutement_id'], user_id: current_user.id)
  @user = current_user
 

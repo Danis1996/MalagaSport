@@ -1,4 +1,5 @@
 class RecrutementsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_recrutement, only: [:show, :edit, :update, :destroy]
 
   # GET /recrutements
@@ -15,8 +16,6 @@ class RecrutementsController < ApplicationController
 
   # GET /recrutements/new
   def new
-    puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-   
     @recrutement = Recrutement.new('content' => params[:content], 'deadline' => params[:deadline])
  @club = Club.find(params['data_value'])
 

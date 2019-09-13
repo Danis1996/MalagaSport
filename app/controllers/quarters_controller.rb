@@ -1,4 +1,5 @@
 class QuartersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_quarter, only: [:show, :edit, :update, :destroy]
 
   # GET /quarters
