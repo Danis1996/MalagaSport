@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'admin/index'
+
   root 'static_pages#index'
   resources :requests
   resources :events
   resources :recrutements
-  resources :clubs
+  resources :clubs do
+  	resources :pictures
+  end
   resources :quarters
   devise_for :users
   resources :users

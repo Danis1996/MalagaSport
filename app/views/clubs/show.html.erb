@@ -7,8 +7,25 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
+
+
+
+	<%if @club.picture.attached?%>
+    	<%= image_tag @club.picture, alt: 'picture' ,:height => '300px',:width => '600px'%>
+  <%else%>
+    <p>=== Il n'y a pas encore de photos lié à cet club ===</p>
+  <%end%>
+
+  <% if current_user == @club.admin %>
+    <h5>Changer de picture ?</h5>
+      <%= form_tag club_pictures_path(@club.id), multipart: true do %>
+      <%= file_field_tag :picture %>
+      <%= submit_tag "mettre à jour" %>
+    <% end %>
+  <% end %>
 
 
 

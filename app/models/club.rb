@@ -5,4 +5,5 @@ class Club < ApplicationRecord
 	has_many :members, class_name: 'User'
 	has_many :participants, through: :recrutements
 	has_many :events
+	has_one_attached :picture
 end
