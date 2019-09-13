@@ -22,6 +22,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1/edit
   def edit
+    @quarters = Quarter.all
   end
 
   # POST /clubs

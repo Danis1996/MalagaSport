@@ -22,87 +22,54 @@ Rails.start()
 
 $(document).on('turbolinks:load',function(){
 
-$('.envoi').off("click").on("click",function(){
+     $('.envoi').off("click").on("click",function(){
 
 
-               var id = $(this).attr('id');
+                    var id = $(this).attr('id');
 
 
-               Rails.ajax({
+                   
+                              window.location.replace('/recrutements/new?data_value='+id)
 
-                    url: "/recrutements/new",
-
-                    type: "get",
-
-                    data: "data_value="+id,
-
-                    success: function(data) {
-                         window.location.replace('/recrutements/new?data_value='+id)
-                    },
-
-                    error: function(data) {}
-
-                    })
-
-          })
+               })
 
 
 
-$('.demand').off("click").on("click",function(){
+     $('.demand').off("click").on("click",function(){
 
 
-               var id = $(this).attr('id');
+                    var id = $(this).attr('id');
 
 
-               Rails.ajax({
+                  
+                              window.location.replace('/requests/new?data_value='+id)
 
-                    url: "/requests/new",
 
 
-                    type: "get",
-
-                    data: "data_value="+id,
-
-                    success: function(data) {
-                         window.location.replace('/requests/new?data_value='+id)
-                    },
-
-                    error: function(data) {}
-
-                    })
-
-          })
+               })
 
 
 
 
 
-$('.lasa').off("click").on("click",function(){
+     $('.lasa').off("click").on("click",function(){
 
 
-               var id = $(this).attr('id');
+                    var id = $(this).attr('id');
 
 
-               Rails.ajax({
 
-                    url: "/events/new",
-                    
+                              window.location.replace('/events/new?data_value='+id)
 
-                    type: "get",
 
-                    data: "data_value="+id,
+               
 
-                    success: function(data) {
-                         window.location.replace('/events/new?data_value='+id)
-                    },
+         });
 
-                    error: function(data) {}
+     $('.requete').off("click").on("click", function(){
+          var id = $(this).data('requestid')
+          var recrutements = $(this).data('id')
+          window.location.replace('/requests/'+id+'/edit?data_value='+recrutements)
+     })
 
-                    })
-
-          })
-
-          
-
-    });
-
+})

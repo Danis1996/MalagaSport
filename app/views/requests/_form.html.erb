@@ -1,17 +1,6 @@
-<%= form_with(model: request, local: true) do |form| %>
-  <% if request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+   
 
-      <ul>
-        <% request.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-   <%= form_tag url_for(action: 'create'), method: "request" do %>
+   <%= form_tag url_for(action: 'update'), method: "patch" do |form|%>
     <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
 
 
@@ -33,7 +22,6 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= submit_tag %>
   </div>
-<% end %>
 <% end %>

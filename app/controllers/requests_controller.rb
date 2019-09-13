@@ -15,13 +15,14 @@ class RequestsController < ApplicationController
   # GET /requests/new
   def new
 
-   @request = Request.new('application_letter' => params[:application_letter],'parcours' => params[:parcours])
+   @request = Request.new
      @recrutement = Recrutement.find(params['data_value'])
 
   end
 
   # GET /requests/1/edit
   def edit
+    @recrutement = Recrutement.find(params['data_value'])
   end
 
   # POST /requests
@@ -47,10 +48,11 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1
   # PATCH/PUT /requests/1.json
   def update
-    @club = @request.recrutement.club
-    @user = @request.user
-    if @user.update(club_id: @club.id)
-      redirect_to club_path(@club.id)
+    @request = Request.find(params[:id])
+    puts "*"*60
+    puts params
+    if @request.update(application_letter: params['application_letter'], parcours: params['parcours'], recrutement_id: params['recrutement_id'])
+      redirect_to club_path(@request.recrutement.club_id)
     else
       render @request
     end
@@ -69,11 +71,13 @@ class RequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
+      puts "*"*50
+      puts params
       @request = Request.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:application_letter, :parcours, recrutement_id: params['recrutement_id'], user_id: current_user.id)
+      params.require(:request).permit(application_letter: params['application_letter'], parcours: params['parcours'], recrutement_id: params['recrutement_id'], user_id: current_user.id)
     end
 end
