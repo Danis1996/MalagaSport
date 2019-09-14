@@ -2,7 +2,7 @@
 
 <h3>Projet final du groupe 03</h3>
 <br>
-<h2> Promotion THP5 Sayna dant The Hacking Project:</h3> 
+<h2> Promotion THP5 Sayna, The Hacking Project:</h3> 
 <br>
 <p>Promouvons ensemble le sport à Madagascar. Le site qui facilite la mise en relation des joueurs de football et ceux des recruteurs dans tout Madagascar, à tout moment.</p>
 
