@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @recrutement = Recrutement.find(params['id'])
   end
 
   # POST /events
@@ -44,8 +45,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event = Event.find(params[:id])
     respond_to do |format|
-      if @event.update(event_params)
+      if @event.update(start_date: params['start_date'] , duration: params['duration'], title: params['title'], description: params['description'], price: params['price'], location: params['location'])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -73,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
+      params.require(:event).permit(start_date: params['start_date'] , duration: params['duration'], title: params['title'], description: params['description'], price: params['price'], location: params['location'])
     end
 end

@@ -79,5 +79,11 @@ $(document).on('turbolinks:load',function(){
           window.location.replace('/clubs/'+id+'/edit?data_value='+quarter)
      })
 
+     // $('.event').off("click").on("click", function(){
+     //      var id = $(this).data('eventid')
+     //      var quarter = $(this).data('id_event')
+     //      window.location.replace('/events/'+id+'/edit?data_value='+club)
+     // })
+
 
 })import "../css/application.css"

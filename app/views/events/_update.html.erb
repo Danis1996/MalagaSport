@@ -1,17 +1,5 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-        <% event.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <%= form_tag url_for(action: 'create'), method: "event" do %>
+   <%= form_tag url_for(action: 'update'), method: "patch" do |form|%>
     <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
 
 
@@ -22,7 +10,7 @@
 
   <div class="field">
     <%= label_tag :duration %>
-    <%= text_field_tag :duration %>
+    <%= time_field_tag :duration %>
   </div>
 
   <div class="field">
@@ -32,7 +20,7 @@
 
   <div class="field">
     <%= label_tag :description %>
-    <%= text_field_tag :description %>
+    <%= text_area_tag :description %>
   </div>
 
   <div class="field">
@@ -47,11 +35,10 @@
 
 
     <div class="field">
-    <input type="hidden" name="club_id" value="<%=@club.id%>">
+    <input type="hidden" name="event_id" value="<%=@event.id%>">
   </div>
 
   <div class="actions">
-     <%= submit_tag "creer event" %>
+    <%= submit_tag "Mettre à jour" %>
   </div>
-<% end %>
 <% end %>
