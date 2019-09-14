@@ -80,4 +80,4 @@ $(document).on('turbolinks:load',function(){
      })
 
 
-})
+})import "../css/application.css"
