@@ -1,5 +1,12 @@
 # MALAGASPORT
-Projet final du groupe 03, promotion THP5 Sayna dant The Hacking Project: Malaga’Sport. Promouvons ensemble le sport à Madagascar. Le site qui facilite la mise en relation des joueurs de football et ceux des recruteurs dans tout Madagascar, à tout moment.
+
+<h3>Projet final du groupe 03</h3>
+<br>
+<h2> Promotion THP5 Sayna dant The Hacking Project:</h3> 
+ <br>
+<h1>MalagaSport</h1>
+ <br>
+ <p>Promouvons ensemble le sport à Madagascar. Le site qui facilite la mise en relation des joueurs de football et ceux des recruteurs dans tout Madagascar, à tout moment.</p>
 
 # MADE WITH LOVE 💕 FROM CODESTAR GROUPS
 
