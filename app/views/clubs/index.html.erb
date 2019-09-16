@@ -1,12 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Liste des Clubs</h1>
+
+<% if user_signed_in? %>
  <% a = 0 %>
 
-<%if a == @clubs.count %>
-  <h1><%= link_to 'Créer un club', new_club_path %></h1>
-  
+<% @clubs.each do |club| %>
+
+​
+
+  <% if club.admin.id == current_user.id %>
+
+  <h2><%= link_to 'Mon club', club_path(club.id) %></h2>
+
+    
+
+  <% else %>
+
+    <% a+= 1%>
+
+  <% end %>
+
 <% end %>
+
+<%if a == @clubs.count %>
+
+  <h1><%= link_to 'Créer un club', new_club_path %></h1>
+
+  
+
+<% end %>
+<%end%>
 
 <table>
   <thead>
